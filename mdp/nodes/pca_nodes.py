@@ -108,8 +108,14 @@ class PCANode(mdp.Node):
         return self.explained_variance
 
     def _train(self, x):
+        if self.input_dim is None:
+            self.input_dim = x.shape[1]
+        print "CORRECT SOURCE: input_dim should have been FIXED!!!"
+        print "self.input_dim=", self.input_dim
+
         # update the covariance matrix
         self._cov_mtx.update(x)
+
 
     def _adjust_output_dim(self):
         """Return the eigenvector range and set the output dim if required.
@@ -128,6 +134,7 @@ class PCANode(mdp.Node):
         # specified directly
         if self.output_dim is not None and self.output_dim >= 1:
             # (eigenvalues sorted in ascending order)
+            print "CORRECT SOURCE. self.input_dim=", self.input_dim
             return (self.input_dim - self.output_dim + 1,
                    self.input_dim)
         # otherwise, the number of principal components to keep has been

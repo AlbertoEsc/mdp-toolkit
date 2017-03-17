@@ -414,7 +414,7 @@ class GaussianClassifier(ClassifierNode):
             self._sqrt_def_covs.append(numx.sqrt(numx_linalg.det(cov)))
             if self._sqrt_def_covs[-1] == 0.0:
                 err = ("The covariance matrix is singular for at least "
-                       "one class.")
+                       "one class: %f, p=%d"%(lbl,p))
                 raise mdp.NodeException(err)
             self.means.append(mean)
             self.p.append(p)
