@@ -12,13 +12,9 @@ from __future__ import division
 from past.utils import old_div
 from ._tools import *
 
-# import numx
 import pytest
-# import mdp
 
 from mdp.nodes.gsfa_nodes import graph_delta_values, comp_delta
-
-#TODO: test invalid parameters (training mode, block size, etc)
 
 
 def test_equivalence_SFA_GSFA_regular_mode():

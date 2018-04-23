@@ -16,8 +16,8 @@ import pytest
 import mdp
 
 
-import cuicuilco.patch_mdp  # Is this necessary???
-from cuicuilco.gsfa_nodes import comp_delta, GSFANode, iGSFANode, SFANode_reduce_output_dim, PCANode_reduce_output_dim
+# import cuicuilco.patch_mdp  # Is this necessary???
+from mdp.nodes.gsfa_nodes import comp_delta, GSFANode, iGSFANode, SFANode_reduce_output_dim, PCANode_reduce_output_dim
 
 # TODO: rename offsetting_mode -> slow_feature_scaling_method
 #       *test_SFANode_reduce_output_dim (extraction and inverse)
