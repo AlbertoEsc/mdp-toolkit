@@ -369,6 +369,17 @@ class GSFANode(mdp.Node):
                     ex = "Unknown training method"
                     raise Exception(ex)
 
+    def _execute(self, x, n=None):
+        """Compute the output of the slowest functions.
+        If 'n' is an integer, then use the first 'n' slowest components."""
+        if n:
+            sf = self.sf[:, :n]
+            bias = self._bias[:n]
+        else:
+            sf = self.sf
+            bias = self._bias
+        return mult(x, sf) - bias
+
     def _inverse(self, y):
         """ This function uses a pseudoinverse of the matrix sf to approximate an inverse to the transformation.
         """
